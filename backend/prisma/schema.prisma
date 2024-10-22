@@ -15,5 +15,5 @@ model car {
   system String
   mpg Int
   transmission String
-  img String
+  img String?
 }

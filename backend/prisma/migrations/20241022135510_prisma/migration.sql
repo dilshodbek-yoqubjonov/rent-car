@@ -6,7 +6,7 @@ CREATE TABLE "car" (
     "system" TEXT NOT NULL,
     "mpg" INTEGER NOT NULL,
     "transmission" TEXT NOT NULL,
-    "img" TEXT NOT NULL,
+    "img" TEXT,
 
     CONSTRAINT "car_pkey" PRIMARY KEY ("id")
 );
