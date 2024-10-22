@@ -1,12 +1,15 @@
 const express = require("express")
 const { PrismaClient } = require('@prisma/client')
+require('dotenv').config()
 
 const prisma = new PrismaClient()
 
 const app = express()
+app.use(express.json())
 
 
-app.listen(8000,()=> {
-    console.log(8000);
-    
+const PORT = process.env.PORT || 8000
+
+app.listen(PORT, () => {
+    console.log(PORT)
 })
