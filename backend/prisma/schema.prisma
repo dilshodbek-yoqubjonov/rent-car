@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,12 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model car {
-  id        Int      @id @default(autoincrement())
-  cost Int 
-  name String
-  system String
-  mpg Int
-  transmission String
-  img String?
+model car_info {
+  id              Int    @id @default(autoincrement())
+  cost            Int
+  city_mpg        Int
+  class           String
+  combination_mpg Int
+  drive           String
+  fuel_type       String
+  highway_mpg     Int
+  make            String
+  name            String
+  system          String
+  model           String
+  transmission    String
+  image           String
 }

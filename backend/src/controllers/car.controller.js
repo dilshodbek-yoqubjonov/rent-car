@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const { log } = require("console");
 const path = require("path");
 
 const prisma = new PrismaClient();
@@ -16,6 +17,7 @@ const getAllCars = async (req, res) => {
 
 // Avtomobil yaratish
 const createCar = async (req, res) => {
+  log("AAAAA");
   // Fayl yuklanganini tekshirish
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).json({ error: "No files were uploaded." });
@@ -23,9 +25,10 @@ const createCar = async (req, res) => {
 
   const image = req.files.image; // Faylni olish
   const { cost, name, system, mpg, transmission } = req.body; // Boshqa ma'lumotlar
-
+  log(req.files.image);
+  log(req.body);
   // Faylni yuklash
-  const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+  const uniqueSuffix = Date.now();
   const fileName = `${image.name}-${uniqueSuffix}${path.extname(image.name)}`;
 
   // Faylni saqlash
@@ -36,14 +39,14 @@ const createCar = async (req, res) => {
 
     try {
       // Ma'lumotlar bazasiga saqlash
-      const savedCar = await prisma.car.create({
+      let savedCar = await prisma.car.create({
         data: {
-          cost: Number(cost), // Raqam sifatida saqlash
+          cost: Number(cost),
           name,
           system,
-          mpg,
+          mpg: Number(mpg),
           transmission,
-          img: fileName, // Fayl nomini bazaga yozish
+          image: fileName, // Fayl nomini bazaga yozish
         },
       });
 

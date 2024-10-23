@@ -5,11 +5,10 @@ const router = require("./routes");
 const fileUpload = require("express-fileupload");
 require("dotenv").config();
 
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(fileUpload()); 
+app.use(fileUpload());
 
 app.use(router);
 
