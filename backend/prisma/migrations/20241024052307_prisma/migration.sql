@@ -3,7 +3,7 @@ CREATE TABLE "car_info" (
     "id" SERIAL NOT NULL,
     "cost" INTEGER NOT NULL,
     "city_mpg" INTEGER NOT NULL,
-    "class" TEXT NOT NULL,
+    "class_type" TEXT NOT NULL,
     "combination_mpg" INTEGER NOT NULL,
     "drive" TEXT NOT NULL,
     "fuel_type" TEXT NOT NULL,
