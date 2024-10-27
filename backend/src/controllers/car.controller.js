@@ -196,8 +196,41 @@ const updateCar = async (req, res) => {
   }
 };
 
+const deleteCar = async (req, res) => {
+  let { id } = req.params;
+  id = id * 1;
+
+  if (isNaN(id)) {
+    return res.json({ message: "Id raqam bolishi kerak", success: false });
+  }
+
+  let checkId = await prisma.car_info.count({
+    where: { id },
+  });
+
+  if (checkId === 0) {
+    return res.json({
+      message: "Bu id da moshina topilmadi",
+      success: false,
+    });
+  }
+
+  try {
+    await prisma.car_info.delete({
+      where: { id },
+    });
+
+    res.json({ message: "Moshina ochirildi", success: true });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Ma'lumotlarni olishda xato yuz berdi.", success: false });
+  }
+};
+
 module.exports = {
   getAllCars,
   createCar,
   updateCar,
+  deleteCar,
 };
