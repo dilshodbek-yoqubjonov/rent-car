@@ -8,7 +8,7 @@ datasource db {
 }
 
 model car_info {
-  id              Int    @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   cost            Int
   city_mpg        Int
   class_type      String
@@ -21,5 +21,5 @@ model car_info {
   system          String
   model           String
   transmission    String
-  image           String
+  image           String[]
 }

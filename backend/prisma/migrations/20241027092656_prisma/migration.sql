@@ -13,7 +13,7 @@ CREATE TABLE "car_info" (
     "system" TEXT NOT NULL,
     "model" TEXT NOT NULL,
     "transmission" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
+    "image" TEXT[],
 
     CONSTRAINT "car_info_pkey" PRIMARY KEY ("id")
 );

@@ -4,6 +4,6 @@ const { getAllCars, createCar } = require("../controllers/car.controller");
 const router = Router();
 
 router.get("/", getAllCars);
-router.post("/", createCar);
+router.post("/create", createCar);
 
 module.exports = router;
